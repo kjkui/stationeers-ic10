@@ -1,0 +1,10 @@
+alias Door d0
+define Light 555215790
+
+alias isDoorOpen r0
+
+main:
+yield
+l isDoorOpen Door Open
+sb Light On isDoorOpen
+j main
