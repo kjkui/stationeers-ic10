@@ -1,5 +1,10 @@
 alias sensor d0
-define SolarPanel -2045627372
+define solarPanel -2045627372
+
+#define sensorHorizontal 0
+#define sensorHorizontal 90
+define sensorHorizontal 180
+#define sensorHorizontal 270
 
 alias valueSensorHorizontal r0
 alias valueSensorVertical r1
@@ -7,10 +12,10 @@ alias valueSensorVertical r1
 main:
 yield
 l valueSensorHorizontal sensor Horizontal
-sub valueSensorHorizontal 180 valueSensorHorizontal
+sub valueSensorHorizontal sensorHorizontal valueSensorHorizontal
 l valueSensorVertical sensor Vertical
 sub valueSensorVertical 90 valueSensorVertical
 
-sb SolarPanel Vertical valueSensorVertical
-sb SolarPanel Horizontal valueSensorHorizontal
+sb solarPanel Vertical valueSensorVertical
+sb solarPanel Horizontal valueSensorHorizontal
 j main
