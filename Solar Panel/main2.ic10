@@ -1,0 +1,30 @@
+alias sensor d0
+alias sensor1 d1
+define solarPanel -2045627372
+
+#define sensorHorizontal 0
+#define sensorHorizontal 90
+define sensorHorizontal 90
+#define sensorHorizontal 270
+
+alias valueSensorHorizontal r0
+alias valueSensorVertical r1
+alias isSun r2
+
+main:
+yield
+l isSun sensor1 Activate
+beqz isSun SunOn
+l valueSensorHorizontal sensor1 Horizontal
+sub valueSensorHorizontal sensorHorizontal valueSensorHorizontal
+l valueSensorVertical sensor Vertical
+sub valueSensorVertical 90 valueSensorVertical
+
+sb solarPanel Vertical valueSensorVertical
+sb solarPanel Horizontal valueSensorHorizontal
+j main
+
+SunOn:
+sb solarPanel Vertical 0
+sb solarPanel Horizontal 90
+j main
